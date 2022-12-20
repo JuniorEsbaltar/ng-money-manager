@@ -1,0 +1,46 @@
+<div class="header">
+  <h1 mat-dialog-title>Money</h1>
+  <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="transactionForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input formControlName="name" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input
+        formControlName="amount"
+        matInput
+        mask="separator.2"
+        thousandSeparator="."
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input formControlName="description" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Classe</mat-label>
+      <mat-select formControlName="type">
+        <mat-option [value]="'EXPENSE'"> Despesa </mat-option>
+        <mat-option [value]="'INCOME'"> Rendimento </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    [disabled]="transactionForm.invalid"
+    [mat-dialog-close]="transactionForm"
+  >
+    Ok
+  </button>
+</div>

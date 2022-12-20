@@ -1,0 +1,18 @@
+:host {
+
+  form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  > .header {
+    display: flex;
+    justify-content: space-between;
+
+    > mat-icon {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon aria-hidden="false" fontIcon="arrow_back_ios"></mat-icon>
+      02-2022
+      <mat-icon aria-hidden="false" fontIcon="arrow_forward_ios"></mat-icon>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div
+      class="transaction"
+      *ngFor="let transaction of transactions?.transactions"
+    >
+      <div
+        style="cursor: pointer"
+        (click)="editTransaction.emit(transaction)"
+        class="description"
+      >
+        <div>
+          {{ transaction.name }}
+        </div>
+        <div class="amount" [attr.data-type]="transaction.type">
+          {{ transaction.amount | currencyMoney }}
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <div class="flex-space-between">
+      <div>Rendimentos totais</div>
+      <div style="color: green">
+        {{ transactions?.amountIncome | currencyMoney }}
+      </div>
+    </div>
+
+    <div class="flex-space-between">
+      Despesas totais
+      <p style="color: red">
+        {{ transactions?.amountExpense | currencyMoney }}
+      </p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex-space-between remaining">
+      Rendimentos menos despesas
+      <p>
+        {{
+          (transactions?.amountIncome || 0) - (transactions?.amountExpense || 0)
+            | currencyMoney
+        }}
+      </p>
+    </div>
+  </mat-card-footer>
+</mat-card>

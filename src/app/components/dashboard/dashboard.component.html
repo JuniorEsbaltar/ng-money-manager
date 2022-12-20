@@ -1,0 +1,7 @@
+<div class="dashboard">
+  <button mat-raised-button (click)="openDialog()">Novo</button>
+  <app-transaction
+    (editTransaction)="openDialog($event)"
+    [transactions]="$transactions | async"
+  ></app-transaction>
+</div>
